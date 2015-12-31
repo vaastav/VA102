@@ -12,6 +12,12 @@ with open('classifier-train.csv','r') as inf:
 print("Starting classification...")
 c1 = NaiveBayesClassifier(train)
 print("Finished classification...")
-	
-def get_classifier():
-	return c1
+
+test = []
+with open('classifier-test.csv','r') as inf:
+	reader = csv.DictReader(inf)
+	for row in reader:
+		x = (row['Cleaned_Review'],row['Review_Label'])
+		test += [x]
+
+accuracy = c1.accuracy(test)
