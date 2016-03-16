@@ -27,7 +27,7 @@ def readfile(filename):
 
 	for review in reviews:
 		lok = [word.encode("utf8") for word in find_keywords(review)]
-		print lok
+		
 		keywords += [lok]
 
 	inf.close()
@@ -36,11 +36,11 @@ def readfile(filename):
 		writer = csv.writer(fout,lineterminator='\n')
 		writer.writerow(next(reader) + ["Keywords"])
 		for row,val in zip(reader,keywords):
-			writer.writerow(row + [val])
+			writer.writerow(row + [' '.join(val)])
 
 
 def main():
-	readfile("sentiment_items.csv")
+	readfile("cleaned_items.csv")
 
 if __name__ == '__main__':
 	main()
