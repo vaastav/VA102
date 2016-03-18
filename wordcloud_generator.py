@@ -18,10 +18,10 @@ text = ""
 with open('keyworded_items.csv','rU') as reviews:
 	reader = csv.DictReader(reviews)
 	for row in reader:
-		text += row['Keywords'] + " "
+		text += row['Keywords'].replace(']',' ').replace('[',' ') + " "
 
 wordcloud = WordCloud(max_font_size=40,relative_scaling=.5).generate(text)
 plt.figure()
-plt.imshow()
+plt.imshow(wordcloud)
 plt.axis("off")
 plt.savefig('keywords.png',bbox_inches='tight',pad_inches=0)
