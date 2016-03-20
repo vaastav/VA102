@@ -1,7 +1,6 @@
 from textblob.classifiers import NaiveBayesClassifier
 import csv
 
-
 train = []
 with open('classifier-train.csv','r') as inf:
 	reader = csv.DictReader(inf)
@@ -21,3 +20,4 @@ with open('classifier-test.csv','r') as inf:
 		test += [x]
 
 accuracy = c1.accuracy(test)
+print(accuracy)
